@@ -1,0 +1,17 @@
+<module>
+	<inherits name="com.google.gwt.user.User" />
+
+	<inherits name="com.gwtent.common.Common" />
+
+	<generate-with class="com.gwtent.gen.reflection.Reflection__ProxyGenerator">
+		<when-type-assignable class="com.gwtent.reflection.client.TypeOracle"/>
+	</generate-with>
+	
+	<generate-with class="com.gwtent.gen.reflection.ReflectionProxyGenerator">
+		<when-type-assignable class="com.gwtent.reflection.client.ClassType"/>
+	</generate-with>
+	
+	<inherits name="com.gwtent.reflection.emul.Emulation" />
+
+	<source path="client" />
+</module>

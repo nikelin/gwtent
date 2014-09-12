@@ -1,0 +1,7 @@
+<module>
+	<inherits name="com.google.gwt.user.User" />
+
+	<source path="client" />
+
+	<script src="gwtent/pagebus.js" />
+</module>

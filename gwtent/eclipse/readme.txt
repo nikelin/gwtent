@@ -1,0 +1,1 @@
+This folder here is for keep Eclipse happy.

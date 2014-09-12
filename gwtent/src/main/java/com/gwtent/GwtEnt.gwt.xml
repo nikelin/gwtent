@@ -1,0 +1,16 @@
+<module>
+	<inherits name="com.google.gwt.user.User" />
+	<inherits name="com.google.gwt.http.HTTP" />
+	
+
+	<inherits name="com.gwtent.pagebus.PageBus" />
+
+	<inherits name="com.gwtent.common.Common" />
+	<inherits name="com.gwtent.widget.Widget" />
+	
+	<inherits name="com.gwtent.reflection.Reflection" />
+	<inherits name="com.gwtent.serialization.Serialization" />
+	
+	<inherits name="com.gwtent.aop.AOP" />
+	
+</module>

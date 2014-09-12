@@ -1,0 +1,11 @@
+<module>
+	<inherits name="com.google.gwt.user.User" />
+	<inherits name="com.google.gwt.http.HTTP" />
+	<inherits name="com.google.gwt.xml.XML" />
+
+	<inherits name="com.gwtent.aop.AOP" />
+	
+	<inherits name="com.gwtent.client.test.common.Common" />
+
+	<source path="" />
+</module>

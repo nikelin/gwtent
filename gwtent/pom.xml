@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.gwtent</groupId>
+	<artifactId>gwtent</artifactId>
+	<packaging>jar</packaging>
+	<version>${gwtent.version}</version>
+	<name>A Reflection, AOP, HTML template, UI Binding, Validate(JSR303) framework and JPA annotation Emulation for GWT. Main Module</name>
+	<url>http://code.google.com/p/gwt-ent/</url>
+
+	<parent>
+		<groupId>com.gwtent</groupId>
+		<artifactId>gwtent.parent</artifactId>
+		<version>2.1</version>
+	</parent>
+
+	<build>
+		<finalName>gwtent</finalName>
+		
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.4.3</version>
+				<configuration>
+					<includes>
+						<include>com/gwtent/test/*TestCase.java</include>
+					</includes>
+				</configuration>
+			</plugin>
+			
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>gwt-maven-plugin</artifactId>
+				<version>1.2</version>
+				<configuration>
+					<includes>**/*GWTTestSuite.java</includes>
+				</configuration>
+				<!-- 
+				<executions>
+					<execution>
+						<goals>
+							<goal>test</goal>
+						</goals>
+					</execution>
+				</executions>
+				 -->
+			</plugin>
+			
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<inherited>true</inherited>
+				<configuration>
+          <excludes>
+          	<exclude>com/gwtent/reflection/emul/**/*.*</exclude>
+            <exclude>com/gwtent/validate/emul/**/*.*</exclude>
+          	<exclude>com/gwtent/validate/jsr303/**/*.*</exclude>
+          	<exclude>javax/validation/**/*.*</exclude>
+          </excludes>
+				</configuration>
+			</plugin>
+			
+			<plugin>
+        <artifactId>maven-jar-plugin</artifactId>
+        <inherited>true</inherited>
+        <executions>
+          <execution>
+            <id>default-jar</id>
+            <phase>package</phase>
+            <goals>
+              <goal>jar</goal>
+            </goals>
+            <configuration>
+		          <includes>
+		            <include>**/*.*</include>
+		          </includes>
+		          
+		          <excludes>
+		          	<exclude>com/gwtent/validate/jsr303/**/*.*</exclude>
+		          	<exclude>javax/validation/**/*.*</exclude>
+		          </excludes>
+		        </configuration>
+          </execution>
+        </executions>
+        
+      </plugin>
+      
+		</plugins>
+		
+		<resources>
+			<resource>
+				<directory>src/main/java</directory>				
+				<!-- 
+				<includes>
+					<include>**/*</include>
+				</includes>
+				 -->
+				<excludes>
+					<exclude>com/gwtent/validate/jsr303/**/*.java</exclude>
+					<exclude>com/gwtent/validate/jsr303/**/*.class</exclude>
+					<exclude>com/gwtent/validate/jsr303/**/*.*</exclude>
+					<exclude>javax/validation/**/*.*</exclude>
+				</excludes>
+			</resource>
+		</resources>
+		
+		<testResources>
+			<testResource>
+				<directory>src/test/java</directory>
+				<includes>
+					<include>**/*</include>
+				</includes>
+			</testResource>
+		</testResources>
+	</build>
+
+	<!-- Project dependencies -->
+	<dependencies>
+
+		<!-- Freemarker -->
+		<dependency>
+			<groupId>freemarker</groupId>
+			<artifactId>freemarker</artifactId>
+			<version>${freemarker.version}</version>
+		</dependency>
+
+		<!-- AspectJ -->
+		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjlib</artifactId>
+			<version>${org.aspectj.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjrt</artifactId>
+			<version>${aspectjrt.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjweaver</artifactId>
+			<version>${aspectjweaver.version}</version>
+		</dependency>
+		
+		<!-- JSR303 Validation -->
+		
+
+		<!--  GWT dependencies -->
+		<dependency>
+			<groupId>com.google.gwt</groupId>
+			<artifactId>gwt-user</artifactId>
+			<version>${gwt.version}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>com.google.gwt</groupId>
+			<artifactId>gwt-servlet</artifactId>
+			<version>${gwt.version}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>com.google.gwt</groupId>
+			<artifactId>gwt-dev</artifactId>
+			<version>${gwt.version}</version>
+		</dependency>
+
+		<!-- JUnit -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.8.1</version>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-validator</artifactId>
+			<version>4.0.0.GA</version>
+			<type>jar</type>
+			<scope>test</scope>
+			<exclusions>
+				<!--  
+				<exclusion>
+					<artifactId>hibernate-core</artifactId>
+					<groupId>org.hibernate</groupId>
+				</exclusion>
+				 -->
+				<exclusion>
+					<artifactId>hibernate-commons-annotations</artifactId>
+					<groupId>org.hibernate</groupId>
+				</exclusion>
+				<!-- 
+				<exclusion>
+					<artifactId>jaxb-impl</artifactId>
+					<groupId>com.sun.xml.bind</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>jaxb-api</artifactId>
+					<groupId>javax.xml</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>jaxb-api</artifactId>
+					<groupId>javax.xml.bind</groupId>
+				</exclusion>
+				 -->
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId>
+			<version>1.5.6</version>
+			<type>jar</type>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>javax.validation</groupId>
+			<artifactId>validation-api</artifactId>
+			<version>1.0.0.GA</version>
+			<type>jar</type>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.testng</groupId>
+			<artifactId>testng</artifactId>
+			<version>5.12.1</version>
+			<type>jar</type>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+</project>

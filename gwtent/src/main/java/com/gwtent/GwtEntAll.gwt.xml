@@ -1,0 +1,5 @@
+<module>
+    <inherits name="com.gwtent.GwtEnt"/>
+
+    <!-- <inherits name="com.gwtext.GwtExt"/> -->
+</module>

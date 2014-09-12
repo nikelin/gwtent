@@ -1,0 +1,14 @@
+<module>
+	<inherits name="com.google.gwt.user.User" />
+
+	<inherits name="org.aspectj.lang.annotation.AspectJAnnotation" />
+	
+	<inherits name="com.gwtent.reflection.Reflection" />
+
+	<generate-with class="com.gwtent.gen.aop.AOPProxyGenerator">
+		<when-type-assignable class="com.gwtent.aop.client.Aspectable"/>
+	</generate-with>
+
+	<source path="client" />
+
+</module>

@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.gwtent</groupId>
+	<artifactId>gwtent.parent</artifactId>
+	<packaging>pom</packaging>
+	<version>2.1</version>
+	<name>A Reflection, AOP, HTML template, UI Binding, Validate(JSR303) framework and JPA annotation Emulation for GWT. Parent Project</name>
+	<url>http://code.google.com/p/gwt-ent/</url>
+
+	<properties>
+		<!-- GWT Config -->
+		<gwt.output.directory>${basedir}/war/WEB-INF/classes</gwt.output.directory>
+
+		<!-- Plugins -->
+		<maven-eclipse-plugin.version>2.7</maven-eclipse-plugin.version>
+		<maven-resources-plugin.version>2.4.1</maven-resources-plugin.version>
+		<maven-war-plugin.version>2.0.2</maven-war-plugin.version>
+		<gwt-maven-plugin.version>1.2</gwt-maven-plugin.version>
+		<maven-clean-plugin.version>2.4</maven-clean-plugin.version>
+
+		<!-- Dependencies Version -->
+		<freemarker.version>2.3.1</freemarker.version>
+		<org.aspectj.version>1.6.2</org.aspectj.version>
+		<aspectjrt.version>1.6.2</aspectjrt.version>
+		<aspectjweaver.version>1.6.2</aspectjweaver.version>
+		<gwt.version>2.5.1</gwt.version>
+		<gwt-gears.version>1.2.1</gwt-gears.version>
+		<datanucleus-appengine.version>1.0.0</datanucleus-appengine.version>
+		<datanucleus-core.version>1.1.0</datanucleus-core.version>
+		<datanucleus-jpa.version>1.1.0</datanucleus-jpa.version>
+		<jdo2-api.version>2.0</jdo2-api.version>
+		<gxt.version>2.1.1</gxt.version>
+		<gwtext.version>2.0.5</gwtext.version>
+		<log4j.version>1.2.15</log4j.version>
+		<gwtent.version>2.1</gwtent.version>
+		<gae.version>1.2.0</gae.version>
+		<gae.port>8080</gae.port>
+	</properties>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-eclipse-plugin</artifactId>
+				<version>${maven-eclipse-plugin.version}</version>
+				<configuration>
+					<wtpversion>2.0</wtpversion>
+					<additionalBuildcommands>
+						<buildcommand>org.eclipse.jdt.core.javabuilder</buildcommand>
+						<buildcommand>org.eclipse.wst.jsdt.core.javascriptValidator</buildcommand>
+						<buildcommand>org.eclipse.wst.common.project.facet.core.builder</buildcommand>
+						<buildcommand>org.eclipse.wst.validation.validationbuilder</buildcommand>
+						<buildcommand>org.maven.ide.eclipse.maven2Builder</buildcommand>
+					</additionalBuildcommands>
+
+					<additionalProjectnatures>
+						<projectnature>org.eclipse.jem.workbench.JavaEMFNature</projectnature>
+						<projectnature>org.eclipse.wst.common.modulecore.ModuleCoreNature</projectnature>
+						<projectnature>org.eclipse.jdt.core.javanature</projectnature>
+						<projectnature>org.maven.ide.eclipse.maven2Nature</projectnature>
+						<projectnature>org.eclipse.wst.common.project.facet.core.nature</projectnature>
+						<projectnature>org.eclipse.wst.jsdt.core.jsNature</projectnature>
+					</additionalProjectnatures>
+					<additionalConfig>
+						<file>
+							<name>.settings/org.eclipse.wst.validation.prefs</name>
+							<content>
+								DELEGATES_PREFERENCE=delegateValidatorList
+								USER_BUILD_PREFERENCE=enabledBuildValidatorListorg.jboss.tools.seam.internal.core.validation.SeamProjectPropertyValidator;org.eclipse.wst.common.componentcore.internal.ModuleCoreValidator;org.eclipse.jst.j2ee.internal.classpathdep.ClasspathDependencyValidator;org.eclipse.wst.wsi.ui.internal.WSIMessageValidator;
+								USER_MANUAL_PREFERENCE=enabledManualValidatorListorg.jboss.tools.seam.internal.core.validation.SeamProjectPropertyValidator;org.eclipse.wst.common.componentcore.internal.ModuleCoreValidator;org.eclipse.jst.j2ee.internal.classpathdep.ClasspathDependencyValidator;org.eclipse.wst.wsi.ui.internal.WSIMessageValidator;
+								USER_PREFERENCE=overrideGlobalPreferencestruedisableAllValidationtrueversion1.2.102.v200905201610
+								eclipse.preferences.version=1
+								override=true
+								suspend=true
+								vf.version=3
+						    </content>
+						</file>
+						<file>
+							<name>.settings/org.maven.ide.eclipse.prefs</name>
+							<content>
+								activeProfiles=
+								eclipse.preferences.version=1
+								fullBuildGoals=process-test-resources
+								includeModules=false
+								resolveWorkspaceProjects=true
+								resourceFilterGoals=process-resources resources:testResources
+								skipCompilerPlugin=true
+								version=1
+						    </content>
+						</file>
+					</additionalConfig>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<inherited>true</inherited>
+				<configuration>
+					<source>1.5</source>
+					<target>1.5</target>
+					<encoding>utf-8</encoding>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-resources-plugin</artifactId>
+				<version>${maven-resources-plugin.version}</version>
+				<configuration>
+					<encoding>utf-8</encoding>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>${maven-war-plugin.version}</version>
+				<configuration>
+					<encoding>cp1252</encoding>
+					<webappDirectory>${basedir}/war</webappDirectory>
+				</configuration>
+			</plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>versions-maven-plugin</artifactId>
+                <version>2.1</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>update-child-modules</goal>
+                        </goals>
+                        <phase>deploy</phase>
+                        <configuration>
+                            <allowSnapshots>true</allowSnapshots>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+
+		</plugins>
+	</build>
+
+	<modules>
+		<module>gwtent</module>
+	</modules>
+
+
+	<repositories>
+		<repository>
+			<id>mvnsearch.org</id>
+			<name>MVN Search</name>
+			<url>
+	            http://www.mvnsearch.org/maven2
+	        </url>
+			<releases>
+				<enabled>true</enabled>
+				<updatePolicy>never</updatePolicy>
+				<checksumPolicy>warn</checksumPolicy>
+			</releases>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+
+		<repository>
+			<id>jboss-public-repository-group</id>
+			<name>JBoss Public Maven Repository Group</name>
+			<url>https://repository.jboss.org/nexus/content/groups/public/</url>
+			<layout>default</layout>
+			<releases>
+				<enabled>true</enabled>
+				<updatePolicy>never</updatePolicy>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+				<updatePolicy>never</updatePolicy>
+			</snapshots>
+		</repository>
+
+		<repository>
+        <id>jboss</id>
+        <url>http://repository.jboss.com/maven2</url>
+        <releases>
+            <enabled>true</enabled>
+        </releases>
+        <snapshots>
+            <enabled>false</enabled>
+        </snapshots>
+    </repository>
+
+
+		<repository>
+			<id>gwt-ext</id>
+			<url>http://www.gwt-ext.com/maven2/</url>
+		</repository>
+	</repositories>
+
+	<pluginRepositories>
+		<pluginRepository>
+			<id>DataNucleus_2</id>
+			<url>http://www.datanucleus.org/downloads/maven2/</url>
+		</pluginRepository>
+		<pluginRepository>
+			<id>maven-gae-plugin-repo</id>
+			<name>maven-gae-plugin repository</name>
+			<url>
+                http://maven-gae-plugin.googlecode.com/svn/repository
+            </url>
+		</pluginRepository>
+	</pluginRepositories>
+
+    <distributionManagement>
+        <repository>
+            <id>a5000.repository</id>
+            <name>a5000-Server-releases</name>
+            <url>http://178.170.254.118:8081/artifactory/a5000-snapshots</url>
+        </repository>
+        <snapshotRepository>
+            <id>a5000.repository</id>
+            <name>a5000-Server-snapshots</name>
+            <url>http://178.170.254.118:8081/artifactory/a5000-snapshots</url>
+        </snapshotRepository>
+    </distributionManagement>
+
+</project>

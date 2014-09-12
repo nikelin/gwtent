@@ -1,0 +1,11 @@
+<module>
+	<inherits name="com.google.gwt.user.User" />
+	<inherits name="com.google.gwt.json.JSON" />
+	<inherits name="com.google.gwt.xml.XML" />
+	
+	<inherits name="com.gwtent.common.Common" />
+	<inherits name="com.gwtent.reflection.Reflection" />
+
+	<source path="client" />
+
+</module>
